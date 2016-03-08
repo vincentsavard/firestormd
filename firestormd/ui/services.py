@@ -12,7 +12,7 @@ _MEDIA_EXTENSIONS = [".avi", ".mp4"]
 _CONFIG_FILE = ".firestormrc"
 
 def load_configuration():
-    directories_to_look_into = ["~"]
+    directories_to_look_into = [os.path.expanduser("~")]
 
     for directory in directories_to_look_into:
         if os.path.exists(os.path.join(directory, _CONFIG_FILE)):
