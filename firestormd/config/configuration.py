@@ -24,9 +24,6 @@ DEFAULT_CONFIGURATION = {
     "videos": {
         "directory": ConfigurationElement("", str),
     },
-    "server": {
-        "port": ConfigurationElement("12345", int),
-    }
 }
 
 class Configuration:
