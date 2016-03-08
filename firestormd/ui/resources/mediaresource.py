@@ -1,7 +1,7 @@
 from flask import Blueprint, abort, jsonify
 
-from firestorm.ui.services import media_service
-from firestorm.media.exceptions import NoMediaFoundError
+from firestormd.ui.services import media_service
+from firestormd.media.exceptions import NoMediaFoundError
 
 media_blueprint = Blueprint("media", __name__, url_prefix="/api/media")
 

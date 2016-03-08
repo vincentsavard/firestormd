@@ -1,9 +1,9 @@
-from firestorm.media.mediaplayer import MediaPlayer
-from firestorm.media.mediafinder import MediaFinder
-from firestorm.media.mediadatabase import MemoryMediaDatabase
-from firestorm.media.mediarepository import MediaRepository
-from firestorm.media.drivers.mplayer import MPlayerDriver
-from firestorm.service.mediaservice import MediaService
+from firestormd.media.mediaplayer import MediaPlayer
+from firestormd.media.mediafinder import MediaFinder
+from firestormd.media.mediadatabase import MemoryMediaDatabase
+from firestormd.media.mediarepository import MediaRepository
+from firestormd.media.drivers.mplayer import MPlayerDriver
+from firestormd.service.mediaservice import MediaService
 
 _MEDIA_EXTENSIONS = [".avi", ".mp4"]
 _MEDIA_DIRECTORY = "/home/vincent/dev/projects/void/pyrite/pyrited/build/data"

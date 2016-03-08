@@ -1,7 +1,7 @@
 from flask import Blueprint, abort, jsonify
 
-from firestorm.ui.services import media_service
-from firestorm.media.exceptions import NoMediaFoundError, NoMediaLoadedError, MediaAlreadyPlayingError
+from firestormd.ui.services import media_service
+from firestormd.media.exceptions import NoMediaFoundError, NoMediaLoadedError, MediaAlreadyPlayingError
 
 player_blueprint = Blueprint("player", __name__, url_prefix="/api/player")
 
