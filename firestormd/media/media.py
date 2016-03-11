@@ -12,10 +12,9 @@ class Media:
         return self._uri
 
     def to_dict(self):
-        return {self._id: {
-            "media_id": self._id,
-            "media_uri": self._uri
-            }
+        return {
+            "id": self._id,
+            "uri": self._uri
         }
 
     def __eq__(self, other_media):
