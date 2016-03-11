@@ -23,6 +23,7 @@ class ConfigurationElement:
 DEFAULT_CONFIGURATION = {
     "videos": {
         "directory": ConfigurationElement("", str),
+        "driver": ConfigurationElement("omxplayer", str),
     },
 }
 
