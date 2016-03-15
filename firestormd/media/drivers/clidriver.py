@@ -41,8 +41,8 @@ class CLIDriver:
     def play(self, filepath):
         if not self._is_process_started():
             self._process = subprocess.Popen(self._commands.command + [filepath],
-                                             bufsize=0
-                                             stdout=subprocess.PIPE
+                                             bufsize=0,
+                                             stdout=subprocess.PIPE,
                                              stderr=subprocess.PIPE,
                                              stdin=subprocess.PIPE)
         else:
