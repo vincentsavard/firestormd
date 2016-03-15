@@ -6,3 +6,6 @@ __pycache__
 firestorm-cli.sh
 main.py
 runtest.sh
+
+# Firestormd
+.firestormrc
