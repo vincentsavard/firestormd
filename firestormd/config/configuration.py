@@ -5,7 +5,11 @@ class ConfigurationElementNotFound(Exception): pass
 
 class ConfigurationElement:
     def __init__(self, value, type):
-        self._value = type(value)
+        if type is list:
+            self._value = value.split(",")
+        else:
+            self._value = type(value)
+            
         self._type = type
         
     @property
@@ -24,6 +28,7 @@ DEFAULT_CONFIGURATION = {
     "videos": {
         "directory": ConfigurationElement("", str),
         "driver": ConfigurationElement("omxplayer", str),
+        "extensions": ConfigurationElement(".avi,.mp4,.mkv", list)
     },
 }
 

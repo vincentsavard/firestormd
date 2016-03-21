@@ -25,7 +25,7 @@ _CONFIG = load_configuration()
 _MEDIA_DIRECTORY = _CONFIG["videos"]["directory"].value
 
 _media_database = MemoryMediaDatabase()
-_media_finder = MediaFinder(_MEDIA_DIRECTORY, _MEDIA_EXTENSIONS)
+_media_finder = MediaFinder(_MEDIA_DIRECTORY, _CONFIG["videos"]["extensions"].value)
 _media_repository = MediaRepository(_media_database, _media_finder)
 _media_driver = CLIDriver(_CONFIG["videos"]["driver"].value)
 _media_player = MediaPlayer(_media_driver)
