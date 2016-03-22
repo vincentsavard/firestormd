@@ -111,6 +111,27 @@ class TestMediaPlayer(unittest.TestCase):
         with self.assertRaises(NoMediaPlayingError):
             self.media_player.pause()
 
+    def test_given_no_media_loaded_when_calling_get_status_as_dict_then_media_is_none_and_is_not_playing(self):
+        status = self.media_player.get_status_as_dict()
+
+        self.assertTrue(status["loaded_media"] is None)
+        self.assertFalse(status["is_playing"])
+
+    def test_given_a_loaded_media_when_calling_get_status_as_dict_then_media_is_set_and_is_not_playing(self):
+        self.media_player.load(A_MEDIA)
+        status = self.media_player.get_status_as_dict()
+
+        self.assertEqual(status["loaded_media"], A_MEDIA.to_dict())
+        self.assertFalse(status["is_playing"])
+
+    def test_given_a_loaded_media_playing_when_calling_get_status_as_dict_then_media_is_set_and_is_playing(self):
+        self.media_player.load(A_MEDIA)
+        self.media_player.play()
+        status = self.media_player.get_status_as_dict()
+
+        self.assertEqual(status["loaded_media"], A_MEDIA.to_dict())
+        self.assertTrue(status["is_playing"])
+
         
 if __name__ == "__main__":
     unittest.main()

@@ -51,5 +51,11 @@ class MediaPlayer:
     def is_playing(self):
         return self._is_playing
 
+    def get_status_as_dict(self):
+        return {
+            "loaded_media": None if self._media is None else self._media.to_dict(),
+            "is_playing": self._is_playing,
+        }
+
     def _is_media_loaded(self):
         return self._media is not None

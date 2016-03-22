@@ -5,6 +5,10 @@ from firestormd.media.exceptions import NoMediaFoundError, NoMediaLoadedError, N
 
 player_blueprint = Blueprint("player", __name__, url_prefix="/api/player")
 
+@player_blueprint.route("/", methods=["GET"])
+def get_player_status():
+    return jsonify(media_service.get_player_status())
+
 @player_blueprint.route("/load/<int:media_id>", methods=["POST"])
 def load_media(media_id):
     try:

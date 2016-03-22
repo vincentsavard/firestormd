@@ -24,3 +24,6 @@ class MediaService:
 
     def stop_loaded_media(self):
         self._media_player.stop()
+
+    def get_player_status(self):
+        return self._media_player.get_status_as_dict()
