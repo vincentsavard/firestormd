@@ -1,6 +1,6 @@
 class Media:
-    def __init__(self, id, uri):
-        self._id = id
+    def __init__(self, media_id, uri):
+        self._id = media_id
         self._uri = uri
 
     @property
@@ -18,7 +18,7 @@ class Media:
         }
 
     def __eq__(self, other_media):
-        return self._id == other_media._id and self._uri == other_media._uri
+        return self._id == other_media.id and self._uri == other_media.uri
 
     def __hash__(self):
         return hash("{0}+{1}".format(self._id, self._uri))

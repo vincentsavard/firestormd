@@ -11,9 +11,9 @@ DATA_PATH = "./firestormd/tests/data/"
 MEDIA_DIRECTORY_PATH = os.path.join(DATA_PATH, "medias1")
 SUBDIRECTORIES = ["subdir"]
 MEDIA_PATHS = [os.path.join(MEDIA_DIRECTORY_PATH, media_path)
-          for media_path in ("video1.avi", "video2.mp4", "subdir/video3.avi")]
+               for media_path in ("video1.avi", "video2.mp4", "subdir/video3.avi")]
 NON_MEDIA_PATHS = [os.path.join(MEDIA_DIRECTORY_PATH, media_path)
-              for media_path in ("foo.txt",)]
+                   for media_path in ("foo.txt",)]
 ANOTHER_MEDIA_PATH = os.path.join(MEDIA_DIRECTORY_PATH, "video4.mp4")
 VALID_EXTENSIONS = [".avi", ".mp4"]
 

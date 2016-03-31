@@ -12,7 +12,8 @@ extensions={1}
 
 AN_INCOMPLETE_CONFIGURATION_STR = """
 [videos]
-""".format(A_DIRECTORY)
+"""
+
 
 class TestConfiguration(unittest.TestCase):
     def test_given_no_config_str_then_default_config_is_loaded(self):

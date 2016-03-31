@@ -1,5 +1,6 @@
 import os
 
+
 class TemporarilyAddedFile:
     def __init__(self, filepath):
         self._filepath = filepath
@@ -22,14 +23,14 @@ class TemporarilyRemovedFile:
     def __init__(self, filepath):
         self._filepath = filepath
         self._content = ""
-        
+
     def __enter__(self):
         if not os.path.exists(self._filepath):
             raise ValueError("'{0}' does not exist.".format(self._filepath))
-        
+
         with open(self._filepath) as file_handle:
             self._content = file_handle.read()
-            
+
         os.remove(self._filepath)
 
     def __exit__(self, exc_type, exc_value, traceback):

@@ -1,6 +1,6 @@
 from firestormd.media.media import Media
-from firestormd.media.mediadatabase import MemoryMediaDatabase
 from firestormd.media.exceptions import MediaAlreadyExistsError, NoMediaFoundError
+
 
 class MediaRepository:
     def __init__(self, media_database, media_finder):
@@ -13,7 +13,7 @@ class MediaRepository:
 
         if self._media_database.uri_exists(media.uri):
             raise MediaAlreadyExistsError("media.uri={0}, media={1}".format(media.uri, repr(media)))
-        
+
         self._media_database.save(media)
 
     def update(self):

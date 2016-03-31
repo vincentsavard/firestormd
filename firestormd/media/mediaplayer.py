@@ -1,6 +1,5 @@
-import enum
-
 from firestormd.media.exceptions import NoMediaLoadedError, MediaAlreadyPlayingError, NoMediaPlayingError
+
 
 class MediaPlayer:
     def __init__(self, driver):

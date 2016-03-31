@@ -1,17 +1,19 @@
 import configparser
-import os
 
-class ConfigurationElementNotFound(Exception): pass
+
+class ConfigurationElementNotFound(Exception):
+    pass
+
 
 class ConfigurationElement:
-    def __init__(self, value, type):
-        if type is list:
+    def __init__(self, value, value_type):
+        if value_type is list:
             self._value = value.split(",")
         else:
-            self._value = type(value)
-            
-        self._type = type
-        
+            self._value = value_type(value)
+
+        self._type = value_type
+
     @property
     def value(self):
         return self._value
@@ -23,7 +25,7 @@ class ConfigurationElement:
     def __repr__(self):
         return "ConfigurationElement<{0}={1}>".format(self._type.__name__, self._value)
 
-    
+
 DEFAULT_CONFIGURATION = {
     "videos": {
         "directory": ConfigurationElement("", str),
@@ -31,6 +33,7 @@ DEFAULT_CONFIGURATION = {
         "extensions": ConfigurationElement(".avi,.mp4,.mkv", list)
     },
 }
+
 
 class Configuration:
     def __init__(self, config_str=None):
@@ -43,7 +46,7 @@ class Configuration:
 
     def _load_config(self):
         config_parser = configparser.ConfigParser()
-        
+
         if self._config_str is not None:
             config_parser.read_string(self._config_str)
             self._config = self._parse_from_config_parser(config_parser)

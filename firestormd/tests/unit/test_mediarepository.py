@@ -12,7 +12,8 @@ A_MEDIA_URI = "media1"
 ANOTHER_MEDIA_URI = "media2"
 A_NON_EXISTING_ID = 42
 MEDIA_PATHS = {"media1", "media2", "media3"}
-    
+
+
 class TestMediaRepository(unittest.TestCase):
     def setUp(self):
         self.media_database = MemoryMediaDatabase()
@@ -22,7 +23,7 @@ class TestMediaRepository(unittest.TestCase):
     def create_mock_media_finder(self):
         media_finder = Mock()
         media_finder.find_medias.return_value = MEDIA_PATHS
-        
+
         return media_finder
 
     def test_when_calling_get_all_medias_before_adding_medias_then_no_medias_are_returned(self):

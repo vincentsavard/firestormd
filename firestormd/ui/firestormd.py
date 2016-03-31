@@ -1,4 +1,4 @@
-from flask import Flask, abort, jsonify
+from flask import Flask
 
 from firestormd.ui.resources.mediaresource import media_blueprint
 from firestormd.ui.resources.playerresource import player_blueprint

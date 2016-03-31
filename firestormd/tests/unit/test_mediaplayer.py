@@ -7,6 +7,7 @@ from firestormd.media.exceptions import NoMediaLoadedError, MediaAlreadyPlayingE
 
 A_MEDIA = Media(1, "uri")
 
+
 class TestMediaPlayer(unittest.TestCase):
     def setUp(self):
         self.media_driver = Mock()
@@ -132,6 +133,6 @@ class TestMediaPlayer(unittest.TestCase):
         self.assertEqual(status["loaded_media"], A_MEDIA.to_dict())
         self.assertTrue(status["is_playing"])
 
-        
+
 if __name__ == "__main__":
     unittest.main()

@@ -1,5 +1,7 @@
-import os
 import subprocess
+
+from firestormd.media.exceptions import UnsupportedCLIDriver
+
 
 class CLICommands:
     def __init__(self, command, play_command, pause_command, stop_command):
@@ -29,6 +31,7 @@ SUPPORTED_DRIVERS = {
     "omxplayer": CLICommands(["omxplayer", "-o", "hdmi"], b" ", b" ", b"q"),
 }
 
+
 class CLIDriver:
     def __init__(self, driver):
         self._process = None
@@ -53,7 +56,7 @@ class CLIDriver:
 
     def stop(self):
         self._send_command(self._commands.stop_command)
-            
+
     def _is_process_started(self):
         return self._process is not None and self._process.poll() is None
 

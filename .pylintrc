@@ -1,0 +1,6 @@
+[FORMAT]
+
+max-line-length=120
+
+[MESSAGES CONTROL]
+disable=missing-docstring,too-few-public-methods,no-self-use,invalid-name,protected-access,too-many-public-methods

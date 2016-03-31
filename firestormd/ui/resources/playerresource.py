@@ -1,13 +1,20 @@
 from flask import Blueprint, abort, jsonify
 
 from firestormd.ui.services import media_service
-from firestormd.media.exceptions import NoMediaFoundError, NoMediaLoadedError, NoMediaPlayingError, MediaAlreadyPlayingError
+from firestormd.media.exceptions import (
+    NoMediaFoundError,
+    NoMediaLoadedError,
+    NoMediaPlayingError,
+    MediaAlreadyPlayingError
+)
 
 player_blueprint = Blueprint("player", __name__, url_prefix="/api/player")
+
 
 @player_blueprint.route("/", methods=["GET"])
 def get_player_status():
     return jsonify(media_service.get_player_status())
+
 
 @player_blueprint.route("/load/<int:media_id>", methods=["POST"])
 def load_media(media_id):
@@ -16,6 +23,7 @@ def load_media(media_id):
         return jsonify({"status": "ok"})
     except NoMediaFoundError:
         abort(404)
+
 
 @player_blueprint.route("/play", methods=["POST"])
 def play_media():
@@ -29,6 +37,7 @@ def play_media():
     except MediaAlreadyPlayingError:
         abort(400)
 
+
 @player_blueprint.route("/pause", methods=["POST"])
 def pause_current_media():
     try:
@@ -38,6 +47,7 @@ def pause_current_media():
         abort(400)
     except NoMediaPlayingError:
         abort(400)
+
 
 @player_blueprint.route("/stop", methods=["POST"])
 def stop_current_media():
