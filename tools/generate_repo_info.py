@@ -20,9 +20,16 @@ def execute_command(command):
     process = subprocess.Popen(command, stdout=subprocess.PIPE)
     return process.stdout.read().decode("utf-8").strip()
 
-def write_version_py_file():
-    with open("./firestormd/version.py", "w") as file_handle:
+def write_version_py_file(file_path):
+    with open(file_path, "w") as file_handle:
         file_handle.write(VERSION_PY_CONTENT.format(get_current_revision()))
 
 if __name__ == "__main__":
-    write_version_py_file()
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Write version.py")
+    parser.add_argument("path", help="path to version.py")
+
+    args = parser.parse_args()
+
+    write_version_py_file(args.path)
