@@ -5,9 +5,11 @@ __pycache__
 *.pyc
 
 # Scripts
+tools/syntax-checker.sh
 firestorm-cli.sh
 main.py
 runtest.sh
+firestormd/version.py
 
 # Firestormd
 .firestormrc
