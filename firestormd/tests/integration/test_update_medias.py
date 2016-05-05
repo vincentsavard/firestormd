@@ -3,7 +3,7 @@ import unittest
 
 from firestormd.media.mediarepository import MediaRepository
 from firestormd.media.mediafinder import MediaFinder
-from firestormd.media.mediadatabase import MemoryMediaDatabase
+from firestormd.media.memorymediadatabase import MemoryMediaDatabase
 from firestormd.tests.fixtures.mediafixture import MediaFixture
 from firestormd.utils import TemporarilyAddedFile, TemporarilyRemovedFile
 

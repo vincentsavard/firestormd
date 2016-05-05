@@ -3,7 +3,7 @@ import os
 from firestormd.config.configuration import Configuration
 from firestormd.media.mediaplayer import MediaPlayer
 from firestormd.media.mediafinder import MediaFinder
-from firestormd.media.mediadatabase import MemoryMediaDatabase
+from firestormd.media.sqlitemediadatabase import SQLiteMediaDatabase
 from firestormd.media.mediarepository import MediaRepository
 from firestormd.media.drivers.clidriver import CLIDriver
 from firestormd.service.mediaservice import MediaService
@@ -23,7 +23,7 @@ def load_configuration():
 
 _CONFIG = load_configuration()
 
-_media_database = MemoryMediaDatabase()
+_media_database = SQLiteMediaDatabase(_CONFIG["videos"]["database_path"].value)
 _media_finder = MediaFinder(_CONFIG["videos"]["directory"].value, _CONFIG["videos"]["extensions"].value)
 _media_repository = MediaRepository(_media_database, _media_finder)
 _media_driver = CLIDriver(_CONFIG["videos"]["driver"].value)

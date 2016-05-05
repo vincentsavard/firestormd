@@ -5,7 +5,7 @@ from firestormd.media.mediaplayer import MediaPlayer
 from firestormd.media.media import Media
 from firestormd.media.exceptions import NoMediaLoadedError, MediaAlreadyPlayingError, NoMediaPlayingError
 
-A_MEDIA = Media(1, "uri")
+A_MEDIA = Media(1, "uri", "title", 2000)
 
 
 class TestMediaPlayer(unittest.TestCase):

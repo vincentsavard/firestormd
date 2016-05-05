@@ -13,3 +13,4 @@ firestormd/version.py
 
 # Firestormd
 .firestormrc
+firestorm.db

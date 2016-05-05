@@ -2,10 +2,11 @@ import unittest
 from unittest.mock import Mock
 
 from firestormd.media.mediarepository import MediaRepository
-from firestormd.media.mediadatabase import MemoryMediaDatabase
+from firestormd.media.memorymediadatabase import MemoryMediaDatabase
 from firestormd.media.media import Media
 from firestormd.media.exceptions import MediaAlreadyExistsError, NoMediaFoundError
 
+A_MEDIA_TITLE = "title"
 A_MEDIA_ID = 1
 ANOTHER_MEDIA_ID = 2
 A_MEDIA_URI = "media1"
@@ -32,37 +33,37 @@ class TestMediaRepository(unittest.TestCase):
         self.assertEqual(len(medias), 0)
 
     def test_when_calling_get_all_medias_after_adding_a_media_then_one_media_is_returned(self):
-        a_media = Media(A_MEDIA_ID, A_MEDIA_URI)
+        a_media = Media(A_MEDIA_ID, A_MEDIA_URI, A_MEDIA_TITLE)
         self.media_repository.add(a_media)
         medias = self.media_repository.get_all_medias()
 
         self.assertEqual(len(medias), 1)
 
     def test_when_adding_a_media_twice_then_mediaalreadyexistserror_is_raised(self):
-        a_media = Media(A_MEDIA_ID, A_MEDIA_URI)
+        a_media = Media(A_MEDIA_ID, A_MEDIA_URI, A_MEDIA_TITLE)
         self.media_repository.add(a_media)
 
         with self.assertRaises(MediaAlreadyExistsError):
             self.media_repository.add(a_media)
 
     def test_when_adding_a_media_with_an_id_that_already_exists_then_mediaalreadyexistserror_is_raised(self):
-        a_media = Media(A_MEDIA_ID, A_MEDIA_URI)
-        another_media = Media(A_MEDIA_ID, ANOTHER_MEDIA_URI)
+        a_media = Media(A_MEDIA_ID, A_MEDIA_URI, A_MEDIA_TITLE)
+        another_media = Media(A_MEDIA_ID, ANOTHER_MEDIA_URI, A_MEDIA_TITLE)
         self.media_repository.add(a_media)
 
         with self.assertRaises(MediaAlreadyExistsError):
             self.media_repository.add(another_media)
 
     def test_when_adding_a_media_with_an_uri_that_already_exists_then_mediaalreadyexistserror_is_raised(self):
-        a_media = Media(A_MEDIA_ID, A_MEDIA_URI)
-        another_media = Media(ANOTHER_MEDIA_ID, A_MEDIA_URI)
+        a_media = Media(A_MEDIA_ID, A_MEDIA_URI, A_MEDIA_TITLE)
+        another_media = Media(ANOTHER_MEDIA_ID, A_MEDIA_URI, A_MEDIA_TITLE)
         self.media_repository.add(a_media)
 
         with self.assertRaises(MediaAlreadyExistsError):
             self.media_repository.add(another_media)
 
     def test_given_an_existing_media_when_calling_get_by_id_then_same_media_is_returned(self):
-        a_media = Media(A_MEDIA_ID, A_MEDIA_URI)
+        a_media = Media(A_MEDIA_ID, A_MEDIA_URI, A_MEDIA_TITLE)
         self.media_repository.add(a_media)
 
         self.assertEqual(self.media_repository.get_by_id(A_MEDIA_ID), a_media)

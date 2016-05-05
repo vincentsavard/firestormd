@@ -30,7 +30,8 @@ DEFAULT_CONFIGURATION = {
     "videos": {
         "directory": ConfigurationElement("", str),
         "driver": ConfigurationElement("omxplayer", str),
-        "extensions": ConfigurationElement(".avi,.mp4,.mkv", list)
+        "extensions": ConfigurationElement(".avi,.mp4,.mkv", list),
+        "database_path": ConfigurationElement("firestorm.db", str),
     },
 }
 
